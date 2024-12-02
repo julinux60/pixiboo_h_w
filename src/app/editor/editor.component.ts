@@ -10,9 +10,39 @@ import * as fabric from 'fabric';
 })
 export class EditorComponent {
   private canvas!: fabric.Canvas;
-  private scale: number = 0.2; // Échelle pour l'affichage à l'écran
+  private scale: number = 0.3; // Échelle pour l'affichage à l'écran
   private realWidth: number = 2022; // Largeur réelle pour l'impression
   private realHeight: number = 1278; // Hauteur réelle pour l'impression
+
+  urlMap = {
+    VT323:
+      'url(https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJXUdVNF.woff2)',
+    Pacifico:
+      'url(https://fonts.gstatic.com/s/pacifico/v22/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)',
+    Lato100:
+      'url(https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHh30AXC-qNiXg7Q.woff2)',
+    Lato900:
+      'url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh50XSwiPGQ3q5d0.woff2)',
+  };
+
+  fontVT323 = new FontFace('VT323', this.urlMap.VT323, {
+    style: 'normal',
+    weight: 'normal',
+  });
+  fontPacifico = new FontFace('Pacifico', this.urlMap.Pacifico, {
+    style: 'normal',
+    weight: 'normal',
+  });
+
+  Lato100 = new FontFace('Lato', this.urlMap.Lato100, {
+    style: 'normal',
+    weight: '100',
+  });
+
+  Lato900 = new FontFace('Lato', this.urlMap.Lato900, {
+    style: 'normal',
+    weight: '900',
+  });
 
   ngOnInit(): void {
     // Initialiser le canvas Fabric.js avec une taille adaptée à l'écran
@@ -20,6 +50,11 @@ export class EditorComponent {
       width: this.realWidth * this.scale,
       height: this.realHeight * this.scale
     });
+
+    this.fontVT323.load();
+    this.fontPacifico.load();
+    this.Lato100.load();
+    this.Lato900.load();
 
     const deleteIcon =
   "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='595.275px' height='595.275px' viewBox='200 215 230 470' xml:space='preserve'%3E%3Ccircle style='fill:%23F44336;' cx='299.76' cy='439.067' r='218.516'/%3E%3Cg%3E%3Crect x='267.162' y='307.978' transform='matrix(0.7071 -0.7071 0.7071 0.7071 -222.6202 340.6915)' style='fill:white;' width='65.545' height='262.18'/%3E%3Crect x='266.988' y='308.153' transform='matrix(0.7071 0.7071 -0.7071 0.7071 398.3889 -83.3116)' style='fill:white;' width='65.544' height='262.179'/%3E%3C/g%3E%3C/svg%3E";
@@ -232,7 +267,19 @@ fabric.FabricObject .prototype.cornerStyle = 'circle';
 
 
 
+  addText() :void{
+    const text = new fabric.Textbox('Correctly loaded lato100', {
+      left: 350,
+      top: 310,
+      width: 200,
+      fontSize: 200,
+      fontWeight: '900',
+      fontFamily: 'Lato',
+    });
 
+    this.canvas.add(text);
+    this.canvas.renderAll();
+  }
 
 
   addBlueSquare(): void {
