@@ -1,0 +1,27 @@
+:host {
+    height: 100%;
+    width: 100%;
+  }
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: solid #000 1px;
+}
+
+a{
+    margin: 10px;
+    color: #000;
+}
+
+a:hover{
+    text-decoration: overline;
+}
+
+router-outlet{
+    height: 100%;
+    width: 100%;
+}

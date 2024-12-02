@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+/*@keyframes enter {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes exit {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+  }
+
+::view-transition-old(root) {
+    animation: exit 2s ease 0s 1 normal forwards;
+  }
+
+  ::view-transition-new(root) {
+    animation: enter 2s ease 0s 1 normal forwards;
+  } */
+
+
+  /***************************
+  ************FONTS***********
+  ***************************/
+
+  @font-face {
+    font-family: 'Nimbus';
+    src: url('/assets/fonts/NimbusSanL-Reg.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nimbus';
+    src: url('/assets/fonts/NimbusSanL-Bol.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+  /***************************
+  ************STYLE***********
+  ***************************/
+
+*{
+    font-family: Nimbus;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    font-family: Nimbus;
+    font-weight: bold;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+
+}

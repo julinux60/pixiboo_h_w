@@ -1,0 +1,17 @@
+<div class="page">
+  <div class="left" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+    <canvas id="fabricCanvas"></canvas>
+  </div>
+  <div class="right">
+    <div>
+      <button (click)="exportHighResolutionCanvas()">Save</button>
+      <button (click)="resetRotation()">Réinitialiser la rotation</button>
+      <button (click)="rotate90()">Tourner de 90°</button>
+      <button (click)="addBlueSquare()">Ajouter un carré bleu</button>
+    </div>
+    <div style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+      <button id="crop-confirm" style="margin-right: 5px; display: none;">✅ Valider</button>
+      <button id="crop-cancel" style="display: none;">❌ Annuler</button>
+    </div>
+  </div>
+</div>
