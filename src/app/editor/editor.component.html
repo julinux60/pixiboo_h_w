@@ -3,16 +3,32 @@
     <canvas id="fabricCanvas"></canvas>
   </div>
   <div class="right">
-    <div>
+    <div class="tools">
       <button (click)="exportHighResolutionCanvas()">Save</button>
       <button (click)="resetRotation()">Réinitialiser la rotation</button>
       <button (click)="rotate90()">Tourner de 90°</button>
       <button (click)="addBlueSquare()">Ajouter un carré bleu</button>
       <button (click)="addText()">Ajouter Texte</button>
     </div>
-    <div style="position: absolute; top: 10px; right: 10px; z-index: 10;">
-      <button id="crop-confirm" style="margin-right: 5px; display: none;">✅ Valider</button>
-      <button id="crop-cancel" style="display: none;">❌ Annuler</button>
+    <div #editionDiv>
+      <div *ngIf="selectedText">
+        <label for="fontSelector">Police :</label>
+        <select id="fontSelector" [(ngModel)]="fontFamily" (change)="changeFont($event)">
+          <option value="VT323">VT323</option>
+          <option value="Pacifico">Pacifico</option>
+          <option value="Lato100">Lato (Light)</option>
+          <option value="Lato900">Lato (Bold)</option>
+        </select>
+
+        <label for="fontSizeInput">Taille :</label>
+        <button (click)="increaseFontSize()">Agrandir</button>
+        <button (click)="decreaseFontSize()">Diminuer</button>
+
+        <label for="colorPicker">Couleur :</label>
+        <input id="colorPicker" type="color" [(ngModel)]="fillColor" (input)="updateTextColor()" />
+        <textarea id="text" [(ngModel)]="text" (input)="updateTextInput()"></textarea>
+      </div>
+
     </div>
   </div>
 </div>
