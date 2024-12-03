@@ -28,6 +28,11 @@
         <input id="colorPicker" type="color" [(ngModel)]="fillColor" (input)="updateTextColor()" />
         <textarea id="text" [(ngModel)]="text" (input)="updateTextInput()"></textarea>
       </div>
+      <div class="pageSettings">
+        <h3>Configuration carte</h3>
+        <label for="colorPickerBGCard">Couleur :</label>
+        <input id="colorPickerBGCard" type="color" [(ngModel)]="pageBackgroundColor" (input)="updatePageBackgroundColor()" />
+      </div>
 
     </div>
   </div>

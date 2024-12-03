@@ -23,6 +23,8 @@ export class EditorComponent {
   fillColor: string = '#000000';
   text: string = 'Texte';
 
+  pageBackgroundColor: string = '#ffffff';
+
 
   @ViewChild('editionDiv') editionDiv!: ElementRef;
   selectedText: fabric.Textbox | null = null;
@@ -99,7 +101,7 @@ export class EditorComponent {
     this.canvas.setDimensions({ width: currentWidth, height: currentHeight });
     this.canvas.setZoom(this.scale);
 
-    this.canvas.backgroundColor = 'white';
+    this.canvas.backgroundColor = this.pageBackgroundColor;
     this.canvas.renderAll();
 
     this.canvas.on('selection:created', (e) => this.updateEditionText(e));
@@ -144,6 +146,11 @@ export class EditorComponent {
       this.selectedText.set('text', this.text);
       this.canvas.renderAll();
     }
+  }
+
+  updatePageBackgroundColor(): void {
+    this.canvas.backgroundColor = this.pageBackgroundColor;
+    this.canvas.renderAll();
   }
 
 
